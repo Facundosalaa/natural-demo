@@ -2,100 +2,301 @@
 <html lang="es-AR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Natural — productos saludables, sin TACC, veganos y orgánicos. Pedí por WhatsApp." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Natural — almacén saludable. Productos sin TACC, veganos y orgánicos. Pedí por WhatsApp." />
   <meta name="theme-color" content="#46724E" />
+  <meta property="og:title" content="Natural — Almacén saludable" />
+  <meta property="og:description" content="Productos sin TACC, veganos y orgánicos. Curaduría real y entrega coordinada por WhatsApp." />
+  <meta property="og:type" content="website" />
   <base href="/tienda/" />
-  <title>Natural — Almacén saludable</title>
+  <title>Natural — Almacén saludable · Posadas, Misiones</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="site-header">
+  <a class="skip-link" href="#productos">Saltar al catálogo</a>
+
+  <header class="site-header" id="siteHeader">
     <div class="container header-inner">
-      <a href="#" class="brand">
+      <a href="#" class="brand" aria-label="Natural — inicio">
         <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
-          <path d="M16 4c-4 6-8 8-8 14a8 8 0 0 0 16 0c0-6-4-8-8-14z" fill="currentColor"/>
+          <path d="M16 4c-4 7-9 10-9 16a9 9 0 0 0 18 0c0-6-5-9-9-16z" fill="currentColor" opacity=".95"/>
+          <path d="M16 13c-2 3-4 5-4 8a4 4 0 0 0 8 0c0-3-2-5-4-8z" fill="rgba(255,255,255,.45)"/>
         </svg>
         <span class="brand-text">Natural</span>
       </a>
-      <nav class="header-nav">
+
+      <nav class="header-nav" aria-label="Principal">
         <a href="#productos">Productos</a>
-        <a href="#info">Envíos</a>
+        <a href="#valor">Por qué Natural</a>
+        <a href="#opiniones">Opiniones</a>
         <a href="#contacto">Contacto</a>
       </nav>
-      <button class="cart-button" id="cartBtn" aria-label="Abrir carrito">
-        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-          <path d="M3 4h2l2.5 11.5a2 2 0 0 0 2 1.5h8.5a2 2 0 0 0 2-1.6L22 8H6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="10" cy="20" r="1.5" fill="currentColor"/>
-          <circle cx="18" cy="20" r="1.5" fill="currentColor"/>
-        </svg>
-        <span class="cart-count" id="cartCount">0</span>
-      </button>
+
+      <div class="header-actions">
+        <a class="btn-link" href="#contacto">Hablar con nosotros</a>
+        <button class="cart-button" id="cartBtn" aria-label="Abrir carrito">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path d="M3 4h2l2.5 11.5a2 2 0 0 0 2 1.5h8.5a2 2 0 0 0 2-1.6L22 8H6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="10" cy="20" r="1.6" fill="currentColor"/>
+            <circle cx="18" cy="20" r="1.6" fill="currentColor"/>
+          </svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
     </div>
   </header>
 
   <main>
+
+    <!-- HERO -->
     <section class="hero">
-      <div class="container">
-        <span class="eyebrow">Almacén natural · Posadas, Misiones</span>
-        <h1 class="hero-title">Comida real,<br/>sin etiquetas confusas.</h1>
-        <p class="hero-subtitle">Productos seleccionados, sin TACC, veganos y orgánicos. Coordinamos entrega o retiro por WhatsApp.</p>
-        <a href="#productos" class="btn btn-primary">Ver productos</a>
+      <div class="hero-bg" aria-hidden="true">
+        <svg class="hero-leaf" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="leafGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#a3c9aa" stop-opacity=".55"/>
+              <stop offset="100%" stop-color="#46724E" stop-opacity=".15"/>
+            </linearGradient>
+          </defs>
+          <path d="M300 60c-90 80-200 170-180 320 18 130 180 200 320 90 100-80 80-220 0-300-50-50-90-90-140-110z" fill="url(#leafGrad)"/>
+          <path d="M300 100c-30 70 0 140 60 180 60 40 110 90 140 160" stroke="#46724E" stroke-width="1.5" stroke-opacity=".25" fill="none"/>
+        </svg>
+      </div>
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Almacén saludable · Posadas, Misiones</span>
+          <h1 class="hero-title">
+            <span class="drop-cap">C</span>omida real,<br/>
+            sin etiquetas <em>confusas</em>.
+          </h1>
+          <p class="hero-subtitle">
+            Curamos productos <strong>sin TACC</strong>, <strong>veganos</strong> y <strong>orgánicos</strong> de productores que conocemos. Te lo entregamos en Posadas y zona.
+          </p>
+          <div class="hero-cta">
+            <a href="#productos" class="btn btn-primary">Ver productos</a>
+            <a href="#valor" class="btn btn-ghost">Cómo trabajamos</a>
+          </div>
+          <div class="hero-meta">
+            <div class="meta-stat">
+              <strong>+12</strong>
+              <span>productores aliados</span>
+            </div>
+            <div class="meta-stat">
+              <strong>24h</strong>
+              <span>respuesta WhatsApp</span>
+            </div>
+            <div class="meta-stat">
+              <strong>100%</strong>
+              <span>curado a mano</span>
+            </div>
+          </div>
+        </div>
+        <aside class="hero-quote reveal">
+          <svg class="quote-mark" viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M9 22c-3 0-5-2-5-5 0-5 4-9 9-10v3c-3 1-5 3-5 6h1c2 0 4 2 4 4s-2 2-4 2zm14 0c-3 0-5-2-5-5 0-5 4-9 9-10v3c-3 1-5 3-5 6h1c2 0 4 2 4 4s-2 2-4 2z" fill="currentColor"/>
+          </svg>
+          <p>Conozco al productor, su nombre, cómo cosecha. Eso no se compra en el super.</p>
+          <footer><strong>Lucía R.</strong> · clienta hace 2 años</footer>
+        </aside>
+      </div>
+
+      <div class="trust-strip reveal" aria-label="Garantías Natural">
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.5 9.5 8 10 4.5-.5 8-5 8-10V6l-8-4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Trazabilidad real</span>
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span>Sin TACC certificado</span>
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c-4 5-8 7-8 12a8 8 0 0 0 16 0c0-5-4-7-8-12z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          <span>100% vegano</span>
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12s4-7 9-7 9 7 9 7-4 7-9 7-9-7-9-7z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          <span>Curaduría visible</span>
+        </div>
       </div>
     </section>
 
-    <section class="categories container" aria-label="Categorías">
-      <article class="cat-card"><span class="cat-emoji" aria-hidden="true">🌾</span><span>Sin TACC</span></article>
-      <article class="cat-card"><span class="cat-emoji" aria-hidden="true">🌱</span><span>Vegano</span></article>
-      <article class="cat-card"><span class="cat-emoji" aria-hidden="true">🍃</span><span>Orgánico</span></article>
-      <article class="cat-card"><span class="cat-emoji" aria-hidden="true">✨</span><span>Sin octógonos</span></article>
+    <!-- CATEGORÍAS -->
+    <section class="categories-section container reveal">
+      <div class="categories">
+        <article class="cat-card" tabindex="0">
+          <span class="cat-mark">Sin<br/>TACC</span>
+          <h3>Sin TACC</h3>
+          <p>Almidones, harinas y mezclas certificadas.</p>
+        </article>
+        <article class="cat-card" tabindex="0">
+          <span class="cat-mark">100%<br/>Vegano</span>
+          <h3>Vegano</h3>
+          <p>Proteínas, snacks y leches vegetales.</p>
+        </article>
+        <article class="cat-card" tabindex="0">
+          <span class="cat-mark">Orgá<br/>nico</span>
+          <h3>Orgánico</h3>
+          <p>Cosechas certificadas, sin agroquímicos.</p>
+        </article>
+        <article class="cat-card" tabindex="0">
+          <span class="cat-mark">Sin<br/>octógonos</span>
+          <h3>Sin octógonos</h3>
+          <p>Etiquetas limpias, ingredientes reales.</p>
+        </article>
+      </div>
     </section>
 
+    <!-- PRODUCTOS -->
     <section id="productos" class="container">
-      <div class="section-head">
-        <h2>Productos destacados</h2>
-        <p class="section-sub">Los más pedidos esta semana</p>
-      </div>
+      <header class="section-head reveal">
+        <span class="eyebrow">Catálogo</span>
+        <h2><span class="serif">Productos destacados</span></h2>
+        <p class="section-sub">Lo más pedido esta semana — todo en stock, listo para entrega o retiro.</p>
+      </header>
       <div class="grid" id="productGrid"></div>
     </section>
 
-    <section id="info" class="info-strip">
-      <div class="container info-grid">
-        <div><strong>Entrega</strong><br/>Posadas y zona — coordinamos por WhatsApp.</div>
-        <div><strong>Retiro</strong><br/>Sin cargo. Punto a confirmar al pedir.</div>
-        <div><strong>Pago</strong><br/>Transferencia, efectivo o link de Mercado Pago.</div>
+    <!-- VALOR -->
+    <section id="valor" class="value-section">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="eyebrow">Por qué Natural</span>
+          <h2><span class="serif">No vendemos cualquier cosa<br/>etiquetada como "saludable".</span></h2>
+        </header>
+        <div class="value-grid">
+          <article class="value-card reveal">
+            <div class="value-num">01</div>
+            <h3>Conocemos al productor</h3>
+            <p>Cada marca pasa por una visita o llamada. Vemos cómo se hace, no solo qué dice el packaging.</p>
+          </article>
+          <article class="value-card reveal">
+            <div class="value-num">02</div>
+            <h3>Curaduría sin atajos</h3>
+            <p>Si el ingrediente principal es maltodextrina, no entra. Si tiene 5 octógonos, no entra. Punto.</p>
+          </article>
+          <article class="value-card reveal">
+            <div class="value-num">03</div>
+            <h3>Coordinación humana</h3>
+            <p>Te respondemos por WhatsApp en horario, no un bot que no entiende. Y si te equivocaste, lo arreglamos.</p>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section id="contacto" class="contact container">
-      <h2>¿Una consulta?</h2>
-      <p>Escribinos por WhatsApp y te respondemos hoy.</p>
-      <a id="contactWa" class="btn btn-primary" href="#" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+    <!-- OPINIONES -->
+    <section id="opiniones" class="container reveal">
+      <header class="section-head">
+        <span class="eyebrow">Opiniones reales</span>
+        <h2><span class="serif">Lo que dicen quienes ya compraron</span></h2>
+      </header>
+      <div class="reviews-grid">
+        <figure class="review-card">
+          <blockquote>
+            <p>Probé su tapioca y volví a hacer pan en casa después de años. Mi celíaca interior está feliz.</p>
+          </blockquote>
+          <figcaption>
+            <strong>Mariana T.</strong>
+            <span>Posadas · pedido recurrente</span>
+          </figcaption>
+        </figure>
+        <figure class="review-card">
+          <blockquote>
+            <p>Lo que más me gusta: respondé sí o sí. No esperás 3 días para saber si tienen stock.</p>
+          </blockquote>
+          <figcaption>
+            <strong>Juan P.</strong>
+            <span>Garupá · cliente frecuente</span>
+          </figcaption>
+        </figure>
+        <figure class="review-card">
+          <blockquote>
+            <p>Pido para mi dietética. Buenos precios mayoristas y entregan a tiempo todas las semanas.</p>
+          </blockquote>
+          <figcaption>
+            <strong>Soledad K.</strong>
+            <span>Almacén saludable Posadas</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="closing-cta">
+      <div class="container closing-inner reveal">
+        <h2 class="serif">¿Algo que no encontrás?<br/>Pedilo y vemos.</h2>
+        <p>Si tu producto favorito no está en el catálogo, escribinos. Si tiene sentido para Natural, lo conseguimos.</p>
+        <a class="btn btn-primary" id="closingWa" href="#" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+      </div>
     </section>
   </main>
 
-  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true" aria-label="Carrito">
+  <!-- CARRITO DRAWER -->
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true" aria-label="Carrito de compras" role="dialog">
     <div class="cart-head">
       <h3>Tu carrito</h3>
-      <button class="cart-close" id="cartClose" aria-label="Cerrar">×</button>
+      <button class="cart-close" id="cartClose" aria-label="Cerrar carrito">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
     </div>
     <div class="cart-body" id="cartBody"></div>
     <div class="cart-foot">
       <div class="cart-total"><span>Total</span><strong id="cartTotal">$0</strong></div>
-      <button class="btn btn-primary cart-cta" id="cartWa" disabled>Pedir por WhatsApp</button>
-      <p class="cart-foot-note">Te respondemos para confirmar disponibilidad y entrega.</p>
+      <button class="btn btn-cta cart-cta" id="cartWa" disabled>Pedir por WhatsApp</button>
+      <p class="cart-foot-note">Te confirmamos disponibilidad y forma de pago en el chat.</p>
     </div>
   </aside>
   <div class="cart-backdrop" id="cartBackdrop"></div>
 
+  <!-- CONTACTO -->
+  <section id="contacto" class="contact-section">
+    <div class="container contact-grid reveal">
+      <div>
+        <span class="eyebrow eyebrow-light">Contacto</span>
+        <h2 class="serif">Hablemos.</h2>
+        <p>Atención por WhatsApp en horario comercial. Pedidos, presupuestos mayoristas, dudas sobre productos.</p>
+      </div>
+      <div class="contact-actions">
+        <a id="contactWa" class="btn btn-light" href="#" target="_blank" rel="noopener">Abrir WhatsApp</a>
+        <a class="btn btn-ghost-light" href="mailto:hola@natural.local">Mandar email</a>
+      </div>
+    </div>
+  </section>
+
   <footer class="site-footer">
-    <div class="container">
-      <span>© Natural · Almacén saludable</span>
-      <span class="dot">·</span>
-      <a href="#" id="footerWa">WhatsApp</a>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M16 4c-4 7-9 10-9 16a9 9 0 0 0 18 0c0-6-5-9-9-16z" fill="currentColor"/>
+          </svg>
+          <span class="brand-text">Natural</span>
+        </div>
+        <p>Almacén saludable. Posadas, Misiones, Argentina.</p>
+      </div>
+      <div>
+        <h4>Tienda</h4>
+        <a href="#productos">Productos</a>
+        <a href="#valor">Por qué Natural</a>
+        <a href="#opiniones">Opiniones</a>
+      </div>
+      <div>
+        <h4>Cuidado</h4>
+        <a href="#" id="footerEnvios">Envíos</a>
+        <a href="#" id="footerRetiros">Retiros</a>
+        <a href="#" id="footerPagos">Pagos</a>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <a href="#" id="footerWa">WhatsApp</a>
+        <a href="mailto:hola@natural.local">hola@natural.local</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span id="year"></span> Natural · Almacén saludable</span>
+      <span>Hecho con ❤ en Posadas</span>
     </div>
   </footer>
 
