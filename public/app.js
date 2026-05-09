@@ -80,25 +80,31 @@ function findProduct(id) {
 
 // === Render ===
 function renderProducts() {
-  const html = PRODUCTS.map((p) => `
-    <article class="product-card" data-id="${p.id}">
+  const html = PRODUCTS.map((p, idx) => {
+    // Alternate sage/peach Quick Add for visual rhythm (idx 1 = sage)
+    const sage = idx === 1 ? ' is-sage' : '';
+    return `
+    <article class="product-card${sage} reveal" data-id="${p.id}">
       <div class="product-media">
         <div class="badges">
           ${p.badges.map((b) => `<span class="badge ${b.cls}">${b.text}</span>`).join('')}
         </div>
         <div class="label">${p.label}</div>
       </div>
-      <div class="product-body">
+      <div class="product-info">
         <h3 class="product-title">${p.name}</h3>
         <p class="product-desc">${p.description}</p>
-        <div class="product-foot">
-          <div class="product-price">${FORMATTER.format(p.price)}<span class="unit">/ ${p.unit}</span></div>
-          <button class="add-btn" data-add="${p.id}" aria-label="Agregar ${p.name} al carrito">Agregar</button>
-        </div>
+        <div class="product-price">${FORMATTER.format(p.price)}<span class="unit">/ ${p.unit}</span></div>
+        <button class="add-btn" data-add="${p.id}" aria-label="Agregar ${p.name} al carrito">Quick Add</button>
       </div>
     </article>
-  `).join('');
+  `;
+  }).join('');
   grid.innerHTML = html;
+  // Re-observe newly created reveal nodes
+  if (window._reveal_io) {
+    grid.querySelectorAll('.reveal').forEach((el) => window._reveal_io.observe(el));
+  }
 }
 
 function renderCart() {
@@ -254,6 +260,7 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
       }
     }
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  window._reveal_io = io;
   document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 } else {
   document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));

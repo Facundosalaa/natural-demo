@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="description" content="Natural — almacén saludable. Productos sin TACC, veganos y orgánicos. Pedí por WhatsApp." />
-  <meta name="theme-color" content="#46724E" />
+  <meta name="description" content="Natural — almacén saludable. Productos sin TACC, veganos y orgánicos. Coordinamos por WhatsApp." />
+  <meta name="theme-color" content="#FBF6E9" />
   <meta property="og:title" content="Natural — Almacén saludable" />
   <meta property="og:description" content="Productos sin TACC, veganos y orgánicos. Curaduría real y entrega coordinada por WhatsApp." />
   <meta property="og:type" content="website" />
@@ -12,38 +12,44 @@
   <title>Natural — Almacén saludable · Posadas, Misiones</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <a class="skip-link" href="#productos">Saltar al catálogo</a>
 
+  <!-- ANNOUNCE BAR -->
+  <div class="announce">
+    <span>Pedí por WhatsApp · <a href="#" id="announceWa">Envío gratis en Posadas con compras superiores a $15.000</a></span>
+  </div>
+
+  <!-- HEADER -->
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
+      <nav class="header-nav-left" aria-label="Principal">
+        <a href="#productos">Tienda</a>
+        <a href="#valor">Sobre Natural</a>
+        <a href="#ingredientes">Ingredientes</a>
+      </nav>
+
       <a href="#" class="brand" aria-label="Natural — inicio">
         <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
           <path d="M16 4c-4 7-9 10-9 16a9 9 0 0 0 18 0c0-6-5-9-9-16z" fill="currentColor" opacity=".95"/>
-          <path d="M16 13c-2 3-4 5-4 8a4 4 0 0 0 8 0c0-3-2-5-4-8z" fill="rgba(255,255,255,.45)"/>
+          <path d="M16 13c-2 3-4 5-4 8a4 4 0 0 0 8 0c0-3-2-5-4-8z" fill="rgba(251,246,233,.5)"/>
         </svg>
-        <span class="brand-text">Natural</span>
+        <span>Natural</span>
       </a>
-
-      <nav class="header-nav" aria-label="Principal">
-        <a href="#productos">Productos</a>
-        <a href="#valor">Por qué Natural</a>
-        <a href="#opiniones">Opiniones</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
 
       <div class="header-actions">
         <a class="btn-link" href="#contacto">Hablar con nosotros</a>
         <button class="cart-button" id="cartBtn" aria-label="Abrir carrito">
-          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-            <path d="M3 4h2l2.5 11.5a2 2 0 0 0 2 1.5h8.5a2 2 0 0 0 2-1.6L22 8H6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="10" cy="20" r="1.6" fill="currentColor"/>
-            <circle cx="18" cy="20" r="1.6" fill="currentColor"/>
+          <!-- tangerine cart icon -->
+          <svg class="cart-icon-tangerine" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+            <circle cx="12" cy="14" r="7" fill="currentColor" opacity=".95"/>
+            <path d="M12 7c-1-1.5-1-3 0-4M11 6c-1-.6-2.6-.5-3.4 0" stroke="#46724E" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+            <path d="M9 11c0 2 2 4 5 4" stroke="rgba(251,246,233,.55)" stroke-width="1.2" stroke-linecap="round" fill="none"/>
           </svg>
-          <span class="cart-count" id="cartCount">0</span>
+          <span id="cartCount" class="cart-count">0</span>
         </button>
       </div>
     </div>
@@ -53,182 +59,414 @@
 
     <!-- HERO -->
     <section class="hero">
-      <div class="hero-bg" aria-hidden="true">
-        <svg class="hero-leaf" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <linearGradient id="leafGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#a3c9aa" stop-opacity=".55"/>
-              <stop offset="100%" stop-color="#46724E" stop-opacity=".15"/>
-            </linearGradient>
-          </defs>
-          <path d="M300 60c-90 80-200 170-180 320 18 130 180 200 320 90 100-80 80-220 0-300-50-50-90-90-140-110z" fill="url(#leafGrad)"/>
-          <path d="M300 100c-30 70 0 140 60 180 60 40 110 90 140 160" stroke="#46724E" stroke-width="1.5" stroke-opacity=".25" fill="none"/>
-        </svg>
-      </div>
-      <div class="container hero-grid">
-        <div class="hero-copy reveal">
-          <span class="eyebrow">Almacén saludable · Posadas, Misiones</span>
-          <h1 class="hero-title">
-            <span class="drop-cap">C</span>omida real,<br/>
-            sin etiquetas <em>confusas</em>.
-          </h1>
-          <p class="hero-subtitle">
-            Curamos productos <strong>sin TACC</strong>, <strong>veganos</strong> y <strong>orgánicos</strong> de productores que conocemos. Te lo entregamos en Posadas y zona.
-          </p>
-          <div class="hero-cta">
-            <a href="#productos" class="btn btn-primary">Ver productos</a>
-            <a href="#valor" class="btn btn-ghost">Cómo trabajamos</a>
-          </div>
-          <div class="hero-meta">
-            <div class="meta-stat">
-              <strong>+12</strong>
-              <span>productores aliados</span>
-            </div>
-            <div class="meta-stat">
-              <strong>24h</strong>
-              <span>respuesta WhatsApp</span>
-            </div>
-            <div class="meta-stat">
-              <strong>100%</strong>
-              <span>curado a mano</span>
-            </div>
-          </div>
-        </div>
-        <aside class="hero-quote reveal">
-          <svg class="quote-mark" viewBox="0 0 32 32" aria-hidden="true">
-            <path d="M9 22c-3 0-5-2-5-5 0-5 4-9 9-10v3c-3 1-5 3-5 6h1c2 0 4 2 4 4s-2 2-4 2zm14 0c-3 0-5-2-5-5 0-5 4-9 9-10v3c-3 1-5 3-5 6h1c2 0 4 2 4 4s-2 2-4 2z" fill="currentColor"/>
+      <div class="container">
+        <!-- Botanical illustrations row -->
+        <div class="hero-illustrations" aria-hidden="true">
+          <!-- Tangerine -->
+          <svg viewBox="0 0 80 90" fill="none">
+            <ellipse cx="40" cy="55" rx="28" ry="26" fill="#F7C98C"/>
+            <ellipse cx="40" cy="55" rx="28" ry="26" stroke="#3D2E1F" stroke-width="1.4"/>
+            <path d="M40 30c-3-5-2-9 1-13M37 25c-4-1-8 0-10 3" stroke="#3D2E1F" stroke-width="1.4" stroke-linecap="round"/>
+            <path d="M28 38c2-2 5-3 8-3M58 50c-4 0-8-3-9-7" stroke="rgba(61,46,31,.35)" stroke-width="1" fill="none"/>
+            <ellipse cx="33" cy="20" rx="10" ry="6" fill="#C8D4A8" stroke="#3D2E1F" stroke-width="1.3"/>
+            <path d="M28 18c2-1 6-1 8 0" stroke="#3D2E1F" stroke-width="1" fill="none"/>
           </svg>
-          <p>Conozco al productor, su nombre, cómo cosecha. Eso no se compra en el super.</p>
-          <footer><strong>Lucía R.</strong> · clienta hace 2 años</footer>
-        </aside>
-      </div>
+          <!-- Mint leaf -->
+          <svg viewBox="0 0 80 90" fill="none">
+            <path d="M40 12c-15 8-22 22-22 35 0 18 12 30 22 30s22-12 22-30c0-13-7-27-22-35z" fill="#C8D4A8" stroke="#3D2E1F" stroke-width="1.4"/>
+            <path d="M40 14v60M28 30c4 4 8 8 12 8M52 35c-4 4-8 8-12 8M30 50c4 3 8 6 12 7M50 55c-4 3-8 5-12 6" stroke="#3D2E1F" stroke-width="1" fill="none" opacity=".7"/>
+          </svg>
+          <!-- Half lemon -->
+          <svg viewBox="0 0 80 90" fill="none">
+            <ellipse cx="40" cy="50" rx="34" ry="28" fill="#FBF6E9" stroke="#3D2E1F" stroke-width="1.4"/>
+            <ellipse cx="40" cy="50" rx="28" ry="22" fill="#F7C98C" opacity=".4"/>
+            <path d="M40 22v56M12 50h56M22 30l36 40M58 30L22 70" stroke="#3D2E1F" stroke-width="1" opacity=".6"/>
+            <ellipse cx="40" cy="50" rx="6" ry="4" fill="#FBF6E9" stroke="#3D2E1F" stroke-width="1"/>
+          </svg>
+          <!-- Wheat-free symbol (grain stem with X) -->
+          <svg viewBox="0 0 80 90" fill="none">
+            <path d="M40 12v66" stroke="#3D2E1F" stroke-width="1.4"/>
+            <ellipse cx="32" cy="22" rx="6" ry="10" fill="#D9E3C2" stroke="#3D2E1F" stroke-width="1.2" transform="rotate(-25 32 22)"/>
+            <ellipse cx="48" cy="22" rx="6" ry="10" fill="#D9E3C2" stroke="#3D2E1F" stroke-width="1.2" transform="rotate(25 48 22)"/>
+            <ellipse cx="30" cy="38" rx="6" ry="10" fill="#D9E3C2" stroke="#3D2E1F" stroke-width="1.2" transform="rotate(-25 30 38)"/>
+            <ellipse cx="50" cy="38" rx="6" ry="10" fill="#D9E3C2" stroke="#3D2E1F" stroke-width="1.2" transform="rotate(25 50 38)"/>
+            <line x1="22" y1="56" x2="58" y2="80" stroke="#E89A4A" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <!-- Berries -->
+          <svg viewBox="0 0 80 90" fill="none">
+            <circle cx="32" cy="48" r="11" fill="#E89A4A" stroke="#3D2E1F" stroke-width="1.4"/>
+            <circle cx="48" cy="40" r="11" fill="#F5BD7A" stroke="#3D2E1F" stroke-width="1.4"/>
+            <circle cx="42" cy="62" r="11" fill="#F7C98C" stroke="#3D2E1F" stroke-width="1.4"/>
+            <path d="M40 30c-2-6-1-12 4-18M44 28c4-3 9-3 12 0" stroke="#3D2E1F" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+            <ellipse cx="42" cy="18" rx="8" ry="4" fill="#C8D4A8" stroke="#3D2E1F" stroke-width="1.2"/>
+          </svg>
+          <!-- Papaya cut -->
+          <svg viewBox="0 0 80 90" fill="none">
+            <path d="M14 45c0-18 12-30 26-30s26 12 26 30c0 6-3 14-10 22-8 9-22 9-32 0C17 59 14 51 14 45z" fill="#F5BD7A" stroke="#3D2E1F" stroke-width="1.4"/>
+            <ellipse cx="40" cy="50" rx="14" ry="14" fill="#FBF6E9"/>
+            <circle cx="36" cy="46" r="1.6" fill="#3D2E1F"/>
+            <circle cx="42" cy="46" r="1.6" fill="#3D2E1F"/>
+            <circle cx="38" cy="52" r="1.6" fill="#3D2E1F"/>
+            <circle cx="44" cy="52" r="1.6" fill="#3D2E1F"/>
+            <circle cx="40" cy="58" r="1.6" fill="#3D2E1F"/>
+          </svg>
+        </div>
 
-      <div class="trust-strip reveal" aria-label="Garantías Natural">
-        <div class="trust-item">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.5 9.5 8 10 4.5-.5 8-5 8-10V6l-8-4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span>Trazabilidad real</span>
-        </div>
-        <div class="trust-item">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-          <span>Sin TACC certificado</span>
-        </div>
-        <div class="trust-item">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c-4 5-8 7-8 12a8 8 0 0 0 16 0c0-5-4-7-8-12z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-          <span>100% vegano</span>
-        </div>
-        <div class="trust-item">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12s4-7 9-7 9 7 9 7-4 7-9 7-9-7-9-7z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-          <span>Curaduría visible</span>
-        </div>
-      </div>
-    </section>
+        <h1 class="hero-title reveal">
+          Comida real,<br/>sin etiquetas <em>confusas</em>.
+        </h1>
 
-    <!-- CATEGORÍAS -->
-    <section class="categories-section container reveal">
-      <div class="categories">
-        <article class="cat-card" tabindex="0">
-          <span class="cat-mark">Sin<br/>TACC</span>
-          <h3>Sin TACC</h3>
-          <p>Almidones, harinas y mezclas certificadas.</p>
-        </article>
-        <article class="cat-card" tabindex="0">
-          <span class="cat-mark">100%<br/>Vegano</span>
-          <h3>Vegano</h3>
-          <p>Proteínas, snacks y leches vegetales.</p>
-        </article>
-        <article class="cat-card" tabindex="0">
-          <span class="cat-mark">Orgá<br/>nico</span>
-          <h3>Orgánico</h3>
-          <p>Cosechas certificadas, sin agroquímicos.</p>
-        </article>
-        <article class="cat-card" tabindex="0">
-          <span class="cat-mark">Sin<br/>octógonos</span>
-          <h3>Sin octógonos</h3>
-          <p>Etiquetas limpias, ingredientes reales.</p>
-        </article>
+        <div class="hero-bottom reveal">
+          <p class="hero-subtitle">
+            Curamos productos <strong>sin TACC</strong>, <strong>veganos</strong> y <strong>orgánicos</strong> de productores que conocemos. Te lo entregamos en Posadas y zona, coordinado por WhatsApp.
+          </p>
+          <div class="hero-cta-block">
+            <a href="#productos" class="btn btn-sage">Ver productos</a>
+            <span class="hero-cta-note">Sin registro · Pedido en menos de 2 minutos</span>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- PRODUCTOS -->
-    <section id="productos" class="container">
-      <header class="section-head reveal">
-        <span class="eyebrow">Catálogo</span>
-        <h2><span class="serif">Productos destacados</span></h2>
-        <p class="section-sub">Lo más pedido esta semana — todo en stock, listo para entrega o retiro.</p>
-      </header>
-      <div class="grid" id="productGrid"></div>
-    </section>
-
-    <!-- VALOR -->
-    <section id="valor" class="value-section">
+    <section id="productos" class="products-section">
       <div class="container">
         <header class="section-head reveal">
-          <span class="eyebrow">Por qué Natural</span>
-          <h2><span class="serif">No vendemos cualquier cosa<br/>etiquetada como "saludable".</span></h2>
+          <span class="pill pill-sage">Catálogo destacado</span>
+          <h2>Lo que estamos llevando esta semana</h2>
+          <p>Tres formatos, todos sin TACC y veganos. Pensados para tu casa o tu local.</p>
         </header>
-        <div class="value-grid">
-          <article class="value-card reveal">
-            <div class="value-num">01</div>
-            <h3>Conocemos al productor</h3>
-            <p>Cada marca pasa por una visita o llamada. Vemos cómo se hace, no solo qué dice el packaging.</p>
+
+        <div class="grid" id="productGrid"></div>
+
+        <!-- TRUST ROW (4 line-art icons) -->
+        <div class="trust-row reveal">
+          <div class="trust-feature">
+            <svg viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M24 8 L10 16 v10 c0 9 6 16 14 18 c8-2 14-9 14-18 v-10 z"/>
+              <path d="M18 24 l4 4 l8-8"/>
+            </svg>
+            <span class="label">Trazabilidad real</span>
+          </div>
+          <div class="trust-feature">
+            <svg viewBox="0 0 48 48" aria-hidden="true">
+              <circle cx="24" cy="24" r="16"/>
+              <path d="M16 24h16M24 16v16"/>
+            </svg>
+            <span class="label">Sin TACC</span>
+          </div>
+          <div class="trust-feature">
+            <svg viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M24 8 c-8 8-12 14-12 22 a12 12 0 0 0 24 0 c0-8-4-14-12-22z"/>
+              <path d="M24 16 v22"/>
+              <path d="M16 26 q8 4 8-4 q0-4-8-4"/>
+              <path d="M32 30 q-8 4-8-4"/>
+            </svg>
+            <span class="label">100% Vegano</span>
+          </div>
+          <div class="trust-feature">
+            <svg viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M8 24 c0-8 8-16 16-16 s16 8 16 16 s-8 16-16 16 s-16-8-16-16z"/>
+              <path d="M8 24 q8-6 16-6 q8 0 16 6"/>
+              <path d="M16 18 q4-2 8-2 q4 0 8 2"/>
+            </svg>
+            <span class="label">Curaduría humana</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDITORIAL SPLIT -->
+    <section class="editorial-split">
+      <div class="container split-grid">
+        <div class="split-image reveal">
+          <div class="split-image-inner">
+            <svg viewBox="0 0 200 240" fill="none" aria-hidden="true">
+              <!-- Producto stylized: jar with wheat/leaf -->
+              <rect x="55" y="100" width="90" height="120" rx="14" fill="#FBF6E9" stroke="#3D2E1F" stroke-width="1.6"/>
+              <rect x="60" y="110" width="80" height="100" rx="6" fill="#F4EFDB"/>
+              <rect x="50" y="92" width="100" height="14" rx="6" fill="#46724E" stroke="#3D2E1F" stroke-width="1.6"/>
+              <text x="100" y="170" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="#46724E" font-weight="500">Natural</text>
+              <text x="100" y="186" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="9" fill="#7A6B52" letter-spacing="2">SIN TACC</text>
+              <!-- Mint leaf decoration top -->
+              <path d="M100 60 c-12 6-18 16-18 28 c0 12 8 18 18 18 c10 0 18-6 18-18 c0-12-6-22-18-28z" fill="#C8D4A8" stroke="#3D2E1F" stroke-width="1.4"/>
+              <path d="M100 62 v44 M88 78 q12 6 24 0 M88 90 q12 4 24 0" stroke="#3D2E1F" stroke-width="0.8" opacity=".6"/>
+              <!-- Drops -->
+              <ellipse cx="40" cy="170" rx="6" ry="9" fill="#A8B98A" opacity=".55"/>
+              <ellipse cx="160" cy="180" rx="5" ry="7" fill="#F7C98C" opacity=".7"/>
+              <ellipse cx="32" cy="200" rx="4" ry="6" fill="#F7C98C" opacity=".55"/>
+            </svg>
+          </div>
+        </div>
+        <div class="split-copy reveal">
+          <span class="pill pill-sage">¿Por qué Natural?</span>
+          <h2>Porque "saludable"<br/>no debería ser un slogan.</h2>
+          <p>Hay góndolas llenas de productos con etiquetas verdes que esconden ingredientes industriales. Nosotros vamos en otro sentido: ingredientes simples, productores con nombre y apellido, y vos sabiendo de dónde viene cada cosa que comprás.</p>
+          <p>Si un producto no pasa nuestra curaduría, no entra. Por más que se venda bien.</p>
+          <a href="#valor" class="btn btn-sage">Cómo trabajamos</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- INGREDIENTS-LIKE: nuestra curaduría (6 columns) -->
+    <section id="ingredientes" class="ingredients-section">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="pill pill-sage">Nuestra curaduría</span>
+          <h2>Lo que pedimos<br/>en cada producto</h2>
+          <p>Seis criterios no negociables. Si un producto no los cumple, no llega a tu pedido.</p>
+        </header>
+
+        <div class="ingredients-grid">
+          <article class="ingredient reveal">
+            <div class="ingredient-illu">
+              <svg viewBox="0 0 80 80" fill="none">
+                <path d="M40 12 c-12 8-18 18-18 30 c0 14 8 22 18 22 c10 0 18-8 18-22 c0-12-6-22-18-30z" fill="#D9E3C2" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M40 14 v50 M28 30 q12 6 24 0 M28 44 q12 6 24 0" stroke="currentColor" stroke-width="0.9" opacity=".6"/>
+              </svg>
+            </div>
+            <h4>Ingredientes simples</h4>
+            <p>Si no podés leer el rotulado en voz alta, mala señal.</p>
           </article>
-          <article class="value-card reveal">
-            <div class="value-num">02</div>
-            <h3>Curaduría sin atajos</h3>
-            <p>Si el ingrediente principal es maltodextrina, no entra. Si tiene 5 octógonos, no entra. Punto.</p>
+          <article class="ingredient reveal">
+            <div class="ingredient-illu">
+              <svg viewBox="0 0 80 80" fill="none">
+                <circle cx="40" cy="40" r="22" fill="#F7C98C" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M40 22 c-2-4-1-8 2-12 M37 18 c-4-1-8 0-10 3" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <ellipse cx="32" cy="14" rx="8" ry="4" fill="#C8D4A8" stroke="currentColor" stroke-width="1.3"/>
+              </svg>
+            </div>
+            <h4>Productor con nombre</h4>
+            <p>Llamamos, visitamos o conocemos a quien lo hace.</p>
           </article>
-          <article class="value-card reveal">
-            <div class="value-num">03</div>
-            <h3>Coordinación humana</h3>
-            <p>Te respondemos por WhatsApp en horario, no un bot que no entiende. Y si te equivocaste, lo arreglamos.</p>
+          <article class="ingredient reveal">
+            <div class="ingredient-illu">
+              <svg viewBox="0 0 80 80" fill="none">
+                <path d="M14 50 q26-30 52 0 q-26 30-52 0z" fill="#FBF6E9" stroke="currentColor" stroke-width="1.4"/>
+                <circle cx="40" cy="50" r="9" fill="#D9E3C2" stroke="currentColor" stroke-width="1.4"/>
+                <circle cx="40" cy="50" r="3" fill="currentColor"/>
+              </svg>
+            </div>
+            <h4>Trazabilidad clara</h4>
+            <p>Lote, fecha, origen. No vendemos a ciegas.</p>
+          </article>
+          <article class="ingredient reveal">
+            <div class="ingredient-illu">
+              <svg viewBox="0 0 80 80" fill="none">
+                <path d="M16 20 v40 a8 8 0 0 0 8 8 h32 a8 8 0 0 0 8-8 v-40" fill="#F1E4C8" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M16 20 h48" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M28 32 v22 M40 32 v22 M52 32 v22" stroke="currentColor" stroke-width="1.2" opacity=".55"/>
+              </svg>
+            </div>
+            <h4>Etiqueta sin trampas</h4>
+            <p>Sin octógonos, sin "natural" usado como excusa.</p>
+          </article>
+          <article class="ingredient reveal">
+            <div class="ingredient-illu">
+              <svg viewBox="0 0 80 80" fill="none">
+                <circle cx="40" cy="40" r="24" fill="#C8D4A8" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M30 40 l8 8 l14-16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+            <h4>Certificación real</h4>
+            <p>Sin TACC y orgánicos: con sello, no con buena onda.</p>
+          </article>
+          <article class="ingredient reveal">
+            <div class="ingredient-illu">
+              <svg viewBox="0 0 80 80" fill="none">
+                <path d="M40 18 c-12 0-22 8-22 20 c0 14 14 24 22 24 c8 0 22-10 22-24 c0-12-10-20-22-20z" fill="#FBF6E9" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M22 38 q18-12 36 0" stroke="currentColor" stroke-width="1.2" fill="none" opacity=".5"/>
+                <circle cx="32" cy="38" r="2" fill="currentColor"/>
+                <circle cx="48" cy="38" r="2" fill="currentColor"/>
+                <path d="M32 50 q8 4 16 0" stroke="currentColor" stroke-width="1.2" fill="none"/>
+              </svg>
+            </div>
+            <h4>Stock fresco</h4>
+            <p>Rotamos rápido, no acumulamos. Te llega vivo.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- OPINIONES -->
-    <section id="opiniones" class="container reveal">
-      <header class="section-head">
-        <span class="eyebrow">Opiniones reales</span>
-        <h2><span class="serif">Lo que dicen quienes ya compraron</span></h2>
-      </header>
-      <div class="reviews-grid">
-        <figure class="review-card">
-          <blockquote>
-            <p>Probé su tapioca y volví a hacer pan en casa después de años. Mi celíaca interior está feliz.</p>
-          </blockquote>
-          <figcaption>
-            <strong>Mariana T.</strong>
-            <span>Posadas · pedido recurrente</span>
-          </figcaption>
-        </figure>
-        <figure class="review-card">
-          <blockquote>
-            <p>Lo que más me gusta: respondé sí o sí. No esperás 3 días para saber si tienen stock.</p>
-          </blockquote>
-          <figcaption>
-            <strong>Juan P.</strong>
-            <span>Garupá · cliente frecuente</span>
-          </figcaption>
-        </figure>
-        <figure class="review-card">
-          <blockquote>
-            <p>Pido para mi dietética. Buenos precios mayoristas y entregan a tiempo todas las semanas.</p>
-          </blockquote>
-          <figcaption>
-            <strong>Soledad K.</strong>
-            <span>Almacén saludable Posadas</span>
-          </figcaption>
-        </figure>
+    <!-- COMPARISON TABLE -->
+    <section class="compare-section">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="pill pill-sage">Comparativa</span>
+          <h2>Natural vs almacén común</h2>
+          <p>Lo que hacemos distinto, en una tabla.</p>
+        </header>
+        <div class="compare-wrap reveal">
+          <div class="compare-row head">
+            <div class="compare-cell compare-cell-feature">Característica</div>
+            <div class="compare-cell us">Natural</div>
+            <div class="compare-cell">Almacén común</div>
+          </div>
+          <div class="compare-row">
+            <div class="compare-cell compare-cell-feature">Conocemos al productor</div>
+            <div class="compare-cell us"><span class="check-on"><svg viewBox="0 0 24 24"><path d="M5 13l5 5 9-12"/></svg></span></div>
+            <div class="compare-cell"><span class="check-off"></span></div>
+          </div>
+          <div class="compare-row">
+            <div class="compare-cell compare-cell-feature">Sin productos con octógonos</div>
+            <div class="compare-cell us"><span class="check-on"><svg viewBox="0 0 24 24"><path d="M5 13l5 5 9-12"/></svg></span></div>
+            <div class="compare-cell"><span class="check-off"></span></div>
+          </div>
+          <div class="compare-row">
+            <div class="compare-cell compare-cell-feature">Lote y origen visibles</div>
+            <div class="compare-cell us"><span class="check-on"><svg viewBox="0 0 24 24"><path d="M5 13l5 5 9-12"/></svg></span></div>
+            <div class="compare-cell"><span class="check-off"></span></div>
+          </div>
+          <div class="compare-row">
+            <div class="compare-cell compare-cell-feature">Atención humana por WhatsApp</div>
+            <div class="compare-cell us"><span class="check-on"><svg viewBox="0 0 24 24"><path d="M5 13l5 5 9-12"/></svg></span></div>
+            <div class="compare-cell"><span class="check-off"></span></div>
+          </div>
+          <div class="compare-row">
+            <div class="compare-cell compare-cell-feature">Entrega o retiro coordinado</div>
+            <div class="compare-cell us"><span class="check-on"><svg viewBox="0 0 24 24"><path d="M5 13l5 5 9-12"/></svg></span></div>
+            <div class="compare-cell"><span class="check-off"></span></div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- CTA FINAL -->
+    <!-- PROBLEMAS COMUNES (sage bg) -->
+    <section class="problems-section">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="pill pill-cream">No, gracias</span>
+          <h2>Lo que <em>no</em> querés<br/>en tu alacena</h2>
+          <p>Si tu producto "saludable" tiene cualquiera de estos, probablemente no es lo que parece.</p>
+        </header>
+        <div class="problems-grid">
+          <article class="problem reveal">
+            <span class="problem-tag">Ingrediente nº1</span>
+            <h3>Maltodextrina disfrazada de "natural"</h3>
+          </article>
+          <article class="problem reveal">
+            <span class="problem-tag">5 octógonos</span>
+            <h3>Etiquetas con más sellos que ingredientes reales</h3>
+          </article>
+          <article class="problem reveal">
+            <span class="problem-tag">Marketing</span>
+            <h3>"Saludable" porque el packaging es verde</h3>
+          </article>
+          <article class="problem reveal">
+            <span class="problem-tag">Origen oculto</span>
+            <h3>Sin lote, sin productor, sin trazabilidad</h3>
+          </article>
+          <article class="problem reveal">
+            <span class="problem-tag">Edulcorantes</span>
+            <h3>Mezclas químicas vendidas como "fitness"</h3>
+          </article>
+          <article class="problem reveal">
+            <span class="problem-tag">Stock viejo</span>
+            <h3>Productos con 6 meses en góndola, listos para vencer</h3>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY US (3 cards peach) -->
+    <section id="valor" class="why-section">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="pill pill-sage">Cómo trabajamos</span>
+          <h2>Tres cosas que hacemos<br/>distinto al resto</h2>
+        </header>
+        <div class="why-grid">
+          <article class="why-card reveal">
+            <span class="why-num">01</span>
+            <h3>Curaduría sin atajos</h3>
+            <p>Probamos cada producto antes de incorporarlo. Si la lista de ingredientes nos hace dudar, no entra al catálogo.</p>
+            <svg class="why-icon" viewBox="0 0 32 32"><path d="M6 16 L13 23 L26 8"/></svg>
+          </article>
+          <article class="why-card reveal">
+            <span class="why-num">02</span>
+            <h3>Trato humano</h3>
+            <p>WhatsApp con personas reales en horario comercial. Nada de bots que no entienden y "tickets" que se pierden.</p>
+            <svg class="why-icon" viewBox="0 0 32 32"><path d="M6 22 v-8 a4 4 0 0 1 4-4 h12 a4 4 0 0 1 4 4 v8 a4 4 0 0 1-4 4 h-9 l-7 5 v-5z"/><path d="M11 16 h10 M11 20 h6"/></svg>
+          </article>
+          <article class="why-card reveal">
+            <span class="why-num">03</span>
+            <h3>Logística cercana</h3>
+            <p>Entregamos en Posadas y zona en bicicleta o auto. Coordinás día y horario directo con quien va a llevártelo.</p>
+            <svg class="why-icon" viewBox="0 0 32 32"><circle cx="9" cy="22" r="5"/><circle cx="23" cy="22" r="5"/><path d="M9 22 L16 10 L20 16 L23 22 M16 10 H22"/></svg>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section id="opiniones" class="reviews-section">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="pill pill-sage">Opiniones</span>
+          <h2>Lo que dicen<br/>quienes ya compraron</h2>
+        </header>
+        <div class="reviews-grid">
+          <figure class="review-card reveal">
+            <blockquote>
+              <p>Probé su tapioca y volví a hacer pan en casa después de años. Mi celíaca interior está feliz.</p>
+            </blockquote>
+            <div class="review-fig">
+              <svg class="review-fig-illu" viewBox="0 0 40 40" aria-hidden="true">
+                <ellipse cx="20" cy="22" rx="14" ry="13" fill="currentColor"/>
+                <path d="M20 12 c-1.5-2.5-1-4 1-6 M17.5 10 c-2-.5-4 0-5 1.5" stroke="#3D2E1F" stroke-width="1" fill="none" stroke-linecap="round"/>
+                <ellipse cx="15" cy="6" rx="4" ry="2" fill="#C8D4A8" stroke="#3D2E1F" stroke-width="1"/>
+              </svg>
+              <figcaption>
+                <strong>Mariana T.</strong>
+                <span>Posadas · pedido recurrente</span>
+              </figcaption>
+            </div>
+          </figure>
+
+          <figure class="review-card reveal">
+            <blockquote>
+              <p>Lo que más me gusta es que respondés sí o sí. No esperás 3 días para saber si tienen stock.</p>
+            </blockquote>
+            <div class="review-fig">
+              <svg class="review-fig-illu" viewBox="0 0 40 40" aria-hidden="true">
+                <path d="M20 6 c-6 4-9 11-9 18 c0 9 5 14 9 14 s9-5 9-14 c0-7-3-14-9-18z" fill="#C8D4A8" stroke="#3D2E1F" stroke-width="1"/>
+                <path d="M20 8 v28 M14 18 q6 3 12 0 M14 26 q6 3 12 0" stroke="#3D2E1F" stroke-width="0.7" opacity=".6"/>
+              </svg>
+              <figcaption>
+                <strong>Juan P.</strong>
+                <span>Garupá · cliente frecuente</span>
+              </figcaption>
+            </div>
+          </figure>
+
+          <figure class="review-card reveal">
+            <blockquote>
+              <p>Pido para mi dietética. Buenos precios mayoristas y entregan a tiempo todas las semanas.</p>
+            </blockquote>
+            <div class="review-fig">
+              <svg class="review-fig-illu" viewBox="0 0 40 40" aria-hidden="true">
+                <circle cx="14" cy="22" r="7" fill="#E89A4A" stroke="#3D2E1F" stroke-width="1"/>
+                <circle cx="24" cy="18" r="7" fill="#F5BD7A" stroke="#3D2E1F" stroke-width="1"/>
+                <circle cx="20" cy="28" r="7" fill="#F7C98C" stroke="#3D2E1F" stroke-width="1"/>
+                <ellipse cx="22" cy="9" rx="5" ry="2" fill="#C8D4A8" stroke="#3D2E1F" stroke-width="1"/>
+              </svg>
+              <figcaption>
+                <strong>Soledad K.</strong>
+                <span>Almacén saludable Posadas</span>
+              </figcaption>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING CTA -->
     <section class="closing-cta">
-      <div class="container closing-inner reveal">
-        <h2 class="serif">¿Algo que no encontrás?<br/>Pedilo y vemos.</h2>
+      <div class="container reveal">
+        <span class="pill pill-cream" style="margin-bottom:24px;">Algo más</span>
+        <h2>¿No encontrás lo que buscás?<br/>Pedilo y vemos.</h2>
         <p>Si tu producto favorito no está en el catálogo, escribinos. Si tiene sentido para Natural, lo conseguimos.</p>
-        <a class="btn btn-primary" id="closingWa" href="#" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+        <a class="btn btn-peach" id="closingWa" href="#" target="_blank" rel="noopener">Hablar por WhatsApp</a>
       </div>
     </section>
   </main>
@@ -238,13 +476,13 @@
     <div class="cart-head">
       <h3>Tu carrito</h3>
       <button class="cart-close" id="cartClose" aria-label="Cerrar carrito">
-        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
       </button>
     </div>
     <div class="cart-body" id="cartBody"></div>
     <div class="cart-foot">
       <div class="cart-total"><span>Total</span><strong id="cartTotal">$0</strong></div>
-      <button class="btn btn-cta cart-cta" id="cartWa" disabled>Pedir por WhatsApp</button>
+      <button class="btn btn-peach cart-cta" id="cartWa" disabled>Pedir por WhatsApp</button>
       <p class="cart-foot-note">Te confirmamos disponibilidad y forma de pago en el chat.</p>
     </div>
   </aside>
@@ -254,13 +492,13 @@
   <section id="contacto" class="contact-section">
     <div class="container contact-grid reveal">
       <div>
-        <span class="eyebrow eyebrow-light">Contacto</span>
-        <h2 class="serif">Hablemos.</h2>
-        <p>Atención por WhatsApp en horario comercial. Pedidos, presupuestos mayoristas, dudas sobre productos.</p>
+        <span class="pill">Contacto</span>
+        <h2>Hablemos.</h2>
+        <p>Atención por WhatsApp en horario comercial. Pedidos, presupuestos mayoristas, dudas sobre productos — todo se resuelve por chat.</p>
       </div>
       <div class="contact-actions">
         <a id="contactWa" class="btn btn-light" href="#" target="_blank" rel="noopener">Abrir WhatsApp</a>
-        <a class="btn btn-ghost-light" href="mailto:hola@natural.local">Mandar email</a>
+        <a class="btn btn-ghost-light" href="mailto:hola@natural.local">Escribir email</a>
       </div>
     </div>
   </section>
@@ -272,18 +510,18 @@
           <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
             <path d="M16 4c-4 7-9 10-9 16a9 9 0 0 0 18 0c0-6-5-9-9-16z" fill="currentColor"/>
           </svg>
-          <span class="brand-text">Natural</span>
+          <span>Natural</span>
         </div>
         <p>Almacén saludable. Posadas, Misiones, Argentina.</p>
       </div>
       <div>
         <h4>Tienda</h4>
         <a href="#productos">Productos</a>
-        <a href="#valor">Por qué Natural</a>
+        <a href="#valor">Cómo trabajamos</a>
         <a href="#opiniones">Opiniones</a>
       </div>
       <div>
-        <h4>Cuidado</h4>
+        <h4>Logística</h4>
         <a href="#" id="footerEnvios">Envíos</a>
         <a href="#" id="footerRetiros">Retiros</a>
         <a href="#" id="footerPagos">Pagos</a>
@@ -296,7 +534,7 @@
     </div>
     <div class="container footer-bottom">
       <span>© <span id="year"></span> Natural · Almacén saludable</span>
-      <span>Hecho con ❤ en Posadas</span>
+      <span>Hecho con cuidado en Posadas</span>
     </div>
   </footer>
 
