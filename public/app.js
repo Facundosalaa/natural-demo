@@ -8,37 +8,13 @@ const STORAGE_KEY = 'natural_cart_v1';
 const CURRENCY = 'ARS';
 const FORMATTER = new Intl.NumberFormat('es-AR', { style: 'currency', currency: CURRENCY, maximumFractionDigits: 0 });
 
-// Catálogo (datos reales de los 3 productos sembrados, normalizados a precio unidad consumidor final).
-const PRODUCTS = [
-  {
-    id: 'tapioca-mixta',
-    name: 'Caja Tapioca Mixta',
-    label: 'Caja Mixta',
-    description: '10 paquetes de 500g + 10 paquetes de 1Kg. La opción para abastecer la semana o tu negocio.',
-    badges: [{ text: 'Sin TACC', cls: 'tacc' }, { text: 'Pack', cls: 'organic' }],
-    price: 129000,
-    unit: 'caja',
-    featured: true,
-  },
-  {
-    id: 'tapioca-500',
-    name: 'Tapioca 500g',
-    label: 'Tapioca 500g',
-    description: 'Almidón de mandioca premium. Sin TACC. Para panes, tortillas y rebozados.',
-    badges: [{ text: 'Sin TACC', cls: 'tacc' }, { text: 'Vegano', cls: 'vegan' }],
-    price: 4700,
-    unit: 'paquete',
-  },
-  {
-    id: 'tapioca-1000',
-    name: 'Tapioca 1Kg',
-    label: 'Tapioca 1Kg',
-    description: 'Formato familiar de tapioca, rendidor y sin gluten. Para repostería y cocina diaria.',
-    badges: [{ text: 'Sin TACC', cls: 'tacc' }, { text: 'Vegano', cls: 'vegan' }],
-    price: 8200,
-    unit: 'paquete',
-  },
+// Catálogo: preferir cargar desde el backend `/api/natural/catalog`.
+const DEFAULT_PRODUCTS = [
+  { id: 'tapioca-mixta', name: 'Caja Tapioca Mixta', label: 'Caja Mixta', description: '10 paquetes de 500g + 10 paquetes de 1Kg. La opción para abastecer la semana o tu negocio.', badges: [{ text: 'Sin TACC', cls: 'tacc' }, { text: 'Pack', cls: 'organic' }], price: 129000, unit: 'caja', featured: true },
+  { id: 'tapioca-500', name: 'Tapioca 500g', label: 'Tapioca 500g', description: 'Almidón de mandioca premium. Sin TACC. Para panes, tortillas y rebozados.', badges: [{ text: 'Sin TACC', cls: 'tacc' }, { text: 'Vegano', cls: 'vegan' }], price: 4700, unit: 'paquete' },
+  { id: 'tapioca-1000', name: 'Tapioca 1Kg', label: 'Tapioca 1Kg', description: 'Formato familiar de tapioca, rendidor y sin gluten. Para repostería y cocina diaria.', badges: [{ text: 'Sin TACC', cls: 'tacc' }, { text: 'Vegano', cls: 'vegan' }], price: 8200, unit: 'paquete' },
 ];
+let PRODUCTS = DEFAULT_PRODUCTS.slice();
 
 // === DOM refs ===
 const grid = document.getElementById('productGrid');
@@ -59,7 +35,7 @@ const yearEl = document.getElementById('year');
 let cart = loadCart();
 
 // === Cart persistence ===
-function loadCart() {
+function loadCartFromLocalStorage() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return {};
@@ -74,8 +50,54 @@ function saveCart() {
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(cart)); } catch {}
 }
 
+async function loadProducts() {
+  try {
+    const res = await fetch('/api/natural/catalog');
+    if (!res.ok) throw new Error('catalog fetch failed')
+    const json = await res.json();
+    if (json && Array.isArray(json.products) && json.products.length) {
+      PRODUCTS = json.products.map((p) => ({
+        id: p.id,
+        slug: p.slug,
+        code: p.code,
+        name: p.name,
+        label: p.name,
+        description: p.shortDescription || p.longDescription || '',
+        badges: (p.badges || []).map((b) => ({ text: b, cls: '' })),
+        price: Number(p.unitPrice || 0),
+        unit: 'unidad',
+        featured: !!p.featuredOrder,
+        mainImagePath: p.mainImagePath,
+      }))
+      return;
+    }
+  } catch (e) {
+    // fallback to defaults
+    PRODUCTS = DEFAULT_PRODUCTS.slice();
+  }
+}
+
+async function loadCartFromServer() {
+  try {
+    const res = await fetch('/api/natural/cart');
+    if (!res.ok) { cart = loadCartFromLocalStorage(); return }
+    const json = await res.json();
+    if (json?.cart?.lines) {
+      cart = {};
+      json.cart.lines.forEach((line) => {
+        cart[line.productId] = { id: line.id, qty: line.quantity, unitPrice: Math.round(line.unitPrice) };
+      });
+      saveCart();
+    } else {
+      cart = {};
+    }
+  } catch (e) {
+    cart = loadCartFromLocalStorage();
+  }
+}
+
 function findProduct(id) {
-  return PRODUCTS.find((p) => p.id === id);
+  return PRODUCTS.find((p) => p.id === id || p.slug === id || p.code === id);
 }
 
 // === Render ===
@@ -146,31 +168,63 @@ function renderCart() {
 }
 
 // === Cart actions ===
-function addToCart(id) {
+async function addToCart(id) {
   const product = findProduct(id);
   if (!product) return;
-  if (cart[id]) {
-    cart[id].qty += 1;
-  } else {
-    cart[id] = { id, qty: 1 };
+  try {
+    const res = await fetch('/api/natural/cart/items', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ productId: id, quantity: 1 }),
+    });
+    const js = await res.json().catch(() => ({}));
+    if (res.ok && js.ok) {
+      await loadCartFromServer();
+      renderCart();
+      openCart();
+      return;
+    }
+  } catch (e) {
+    // fallback to local
   }
-  saveCart();
-  renderCart();
-  openCart();
+  // local fallback behavior
+  if (cart[id]) cart[id].qty += 1; else cart[id] = { qty: 1 };
+  saveCart(); renderCart(); openCart();
 }
 
-function changeQty(id, delta) {
+async function changeQty(id, delta) {
   if (!cart[id]) return;
-  cart[id].qty = Math.max(0, cart[id].qty + delta);
-  if (cart[id].qty === 0) delete cart[id];
-  saveCart();
-  renderCart();
+  const existing = cart[id];
+  const target = Math.max(0, (existing.qty || 0) + delta);
+  if (!existing.id) {
+    // no server item id: fallback to local
+    if (target === 0) delete cart[id]; else cart[id].qty = target;
+    saveCart(); renderCart(); return;
+  }
+  try {
+    if (target === 0) {
+      await fetch(`/api/natural/cart/items/${existing.id}`, { method: 'DELETE' });
+    } else {
+      await fetch(`/api/natural/cart/items/${existing.id}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ quantity: target }) });
+    }
+    await loadCartFromServer(); renderCart();
+  } catch (e) {
+    // fallback local
+    if (target === 0) delete cart[id]; else cart[id].qty = target;
+    saveCart(); renderCart();
+  }
 }
 
-function removeFromCart(id) {
-  delete cart[id];
-  saveCart();
-  renderCart();
+async function removeFromCart(id) {
+  const existing = cart[id];
+  if (!existing) return;
+  if (existing.id) {
+    try {
+      await fetch(`/api/natural/cart/items/${existing.id}`, { method: 'DELETE' });
+      await loadCartFromServer(); renderCart(); return;
+    } catch (e) {}
+  }
+  delete cart[id]; saveCart(); renderCart();
 }
 
 function openCart() {
@@ -270,5 +324,11 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
 if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
 // === Init ===
-renderProducts();
-renderCart();
+async function initStorefront() {
+  await loadProducts();
+  await loadCartFromServer();
+  renderProducts();
+  renderCart();
+}
+
+initStorefront();
