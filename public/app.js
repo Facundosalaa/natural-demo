@@ -320,6 +320,67 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
   document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
 }
 
+// === Wholesale account request form ===
+const wholesaleForm = document.getElementById('wholesaleForm');
+const wholesaleStatus = document.getElementById('wholesaleStatus');
+
+if (wholesaleForm && wholesaleStatus) {
+  wholesaleForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    wholesaleStatus.classList.remove('success', 'error');
+    wholesaleStatus.textContent = '';
+
+    const data = new FormData(wholesaleForm);
+    const payload = {
+      name: String(data.get('name') || '').trim(),
+      email: String(data.get('email') || '').trim(),
+      phone: String(data.get('phone') || '').trim() || null,
+      businessName: String(data.get('businessName') || '').trim() || null,
+      cuit: String(data.get('cuit') || '').trim() || null,
+      address: String(data.get('address') || '').trim() || null,
+      city: String(data.get('city') || '').trim() || null,
+      message: String(data.get('message') || '').trim() || null,
+      segmentSlug: String(data.get('segmentSlug') || 'wholesale'),
+    };
+
+    if (!payload.name || payload.name.length < 2) {
+      wholesaleStatus.textContent = 'Necesitamos tu nombre.';
+      wholesaleStatus.classList.add('error');
+      return;
+    }
+    if (!payload.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) {
+      wholesaleStatus.textContent = 'Ingresá un email válido.';
+      wholesaleStatus.classList.add('error');
+      return;
+    }
+
+    wholesaleForm.classList.add('is-submitting');
+    wholesaleStatus.textContent = 'Enviando...';
+
+    try {
+      const res = await fetch('/api/natural/account-requests', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok || !json.ok) {
+        throw new Error(json.error || 'No pudimos enviar tu solicitud. Probá de nuevo en unos minutos.');
+      }
+      wholesaleStatus.textContent = json.alreadyPending
+        ? 'Ya tenemos tu solicitud anterior. Te respondemos pronto.'
+        : '¡Recibimos tu solicitud! Te contactamos en breve con las credenciales.';
+      wholesaleStatus.classList.add('success');
+      wholesaleForm.reset();
+    } catch (e) {
+      wholesaleStatus.textContent = (e && e.message) || 'No pudimos enviar tu solicitud.';
+      wholesaleStatus.classList.add('error');
+    } finally {
+      wholesaleForm.classList.remove('is-submitting');
+    }
+  });
+}
+
 // === Footer year ===
 if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
